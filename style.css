@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Courier";
+  /* font-weight: 700; */
+  /* color: white; */
+  /* color: black; */
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  width: 100%;
+  position: relative;
+  /* background: black; */
+  /* background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url(./img/nature-4407819_960_720.png); */
+}
+
+.main-container {
+  width: 60%;
+  margin: 5% auto;
+  /* margin-bottom: 10vh !important; */
+  padding: 2.5%;
+  border: 1px solid green;
+  border-radius: 10px;
+  text-align: center;
+  /* padding: 5%; */
+}
+
+.grid-container {
+  margin: auto;
+  display: inline-grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+  border: 2px solid blueviolet;
+}
+
+button,
+.item {
+  font-size: 5rem !important;
+  font-weight: bold;
+  color: red;
+}
+
+.container {
+  /* width: 60%; */
+  margin: auto !important;
+  /* border: 5px solid red; */
+}
+
+#header {
+  margin-bottom: 10%;
+}
