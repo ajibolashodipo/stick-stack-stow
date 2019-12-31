@@ -91,7 +91,6 @@ function whoWins() {
         // String method Search returns -1 if there is no match.
         //So it makes sense to add +1 to make it 0;
         stopGap[g] = arrayOtoString.search(way[g]) + 1;
-        console.log(way + way[g]);
       }
 
       //conditional to find out if array contains a match
