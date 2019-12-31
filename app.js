@@ -17,13 +17,19 @@ var finalRes = {};
 var count = 0;
 var j = 0;
 var k = 0;
+var stopee = 0;
 var array = [];
 var arrayX = [];
 var arrayO = [];
 var waysTowin = collate(toWin);
+var stopGap = [];
+var stopGapCollector = [];
+var finesser = {};
+var men = 47;
 
 $(".item").one("click", doSomething);
 
+//main function
 function doSomething(event) {
   //Class the array of X and O
   if (optionArray[count] == "x") {
@@ -35,14 +41,10 @@ function doSomething(event) {
     k++;
   }
 
-  //Function ot check who wins
+  //Function to check who wins
   whoWins();
 
   this.innerText = optionArray[count];
-  // console.log(this.value);
-  // console.log("XX " + arrayXtoString);
-  // console.log("OO " + arrayOtoString);
-  // console.log(waysTowin);
   count++;
 }
 
@@ -52,22 +54,59 @@ function whoWins() {
   var arrayXtoString = arrayX.join("");
   var arrayOtoString = arrayO.join("");
 
-  waysTowin.forEach(way => {
-    if (way === arrayXtoString) {
-      console.log("x wins");
-      //disables click event after winner is found
-      $(".item").off("click");
-    }
-  });
+  for (way of waysTowin) {
+    //to ensure that stuff only runs when the array contains at least 3 elements
+    if (arrayXtoString.length > 2) {
+      //initializing loop that runs 3 times. Simulating ways to win
+      for (var g = 0; g < 3; g++) {
+        //checks if waystoWin is in the arrayX.
+        // String method Search returns -1 if there is no match.
+        //So it makes sense to add +1 to make it 0;
+        stopGap[g] = arrayXtoString.search(way[g]) + 1;
+      }
 
-  waysTowin.forEach(way => {
-    if (way === arrayOtoString) {
-      console.log("o wins");
-      //disables click event after winner is found
-      $(".item").off("click");
+      //conditional to find out if array contains a match
+      if (!stopGap.includes(0)) {
+        // console.log("itemstopgp " + stopGapCollector);
+        console.log("x wins ajj ");
+        //to disable click event after winner is found
+        $(".item").off("click");
+        break;
+      } else if (stopGap.includes(0) && arrayXtoString.length === 5) {
+        // console.log("tiedinyou " + stopGapCollector);
+        //to disable click event after winner is found
+        $(".item").off("click");
+        console.log("a draw");
+        break;
+      }
     }
-  });
+  }
+
+  for (way of waysTowin) {
+    //to ensure that stuff only runs when the array contains at least 3 elements
+    if (arrayOtoString.length > 2) {
+      //initializing loop that runs 3 times. Simulating ways to win
+      for (var g = 0; g < 3; g++) {
+        //checks if waystoWin is in the arrayX.
+        // String method Search returns -1 if there is no match.
+        //So it makes sense to add +1 to make it 0;
+        stopGap[g] = arrayOtoString.search(way[g]) + 1;
+        console.log(way + way[g]);
+      }
+
+      //conditional to find out if array contains a match
+      if (!stopGap.includes(0)) {
+        // console.log("itemstopgp " + stopGapCollector);
+        console.log("O wins ");
+        //to disable click event after winner is found
+        $(".item").off("click");
+
+        break;
+      }
+    }
+  }
 }
+//Function to find all possible permutations (they are 48 by the way) of winning a tic tac toe game.
 function collate(arr) {
   for (var i = 0; i < arr.length; i++) {
     //convert string to array
@@ -94,4 +133,4 @@ function collate(arr) {
   //console.log(combined);
   return finalRes.combined;
 }
-// console.log(waysTowin);
+//console.log(waysTowin);
