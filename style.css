@@ -3,6 +3,8 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Courier";
+  /* font-family: "Quicksand", sans-serif; */
+  /* font-family: "Manjari", sans-serif; */
   /* font-weight: 700; */
   /* color: white; */
   /* color: black; */
@@ -34,6 +36,9 @@ body {
   text-align: center;
   /* padding: 5%; */
 }
+.main-text {
+  color: red;
+}
 
 .grid-container {
   margin: auto;
@@ -43,11 +48,18 @@ body {
   border: 2px solid blueviolet;
 }
 
-button,
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .item {
   font-size: 5rem !important;
-  font-weight: bold;
-  color: red;
+  color: #555;
+  text-align: center;
+  /* line-height: 1rem; */
+  /* padding: 20% 0; */
 }
 
 .container {

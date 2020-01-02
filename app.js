@@ -1,14 +1,14 @@
 //Variable Declaration
 var buttons = document.querySelectorAll(".item");
-var one = document.getElementById("item-1");
-var two = document.getElementById("item-2");
-var three = document.getElementById("item-3");
-var four = document.getElementById("item-4");
-var five = document.getElementById("item-5");
-var six = document.getElementById("item-6");
-var seven = document.getElementById("item-7");
-var eight = document.getElementById("item-8");
-var nine = document.getElementById("item-9");
+var one = document.querySelector(".item-1");
+var two = document.querySelector(".item-2");
+var three = document.querySelector(".item-3");
+var four = document.querySelector(".item-4");
+var five = document.querySelector(".item-5");
+var six = document.querySelector(".item-6");
+var seven = document.querySelector(".item-7");
+var eight = document.querySelector(".item-8");
+var nine = document.querySelector(".item-9");
 var optionArray = ["x", "o", "x", "o", "x", "o", "x", "o", "x"];
 var middle = [];
 var enRoute = [];
@@ -24,9 +24,12 @@ var arrayO = [];
 var waysTowin = collate(toWin);
 var stopGap = [];
 var stopGapCollector = [];
-var finesser = {};
+var finesser = {
+  // tieTracker: 0
+};
 var men = 47;
-
+// var tieTracker = 0;
+// document.querySelector(".main-text").style.color = "blue";
 $(".item").one("click", doSomething);
 
 //main function
@@ -39,21 +42,38 @@ function doSomething(event) {
   if (optionArray[count] == "o") {
     arrayO[k] = this.value;
     k++;
+
+    //to change the color of player O to another colour.
+    //Here i am trying to extract the classname by some brute weird flex
+    that = this;
+    finesser.that = "." + that.className.split(" ")[1];
+    //console.log(finesser.that);
+
+    //DOM manipulation to change the colour of 'o'
+    document.querySelector(finesser.that).style.color = "blue";
   }
+  // one.style.color = "orange";
 
   //Function to check who wins
   whoWins();
 
-  this.innerText = optionArray[count];
+  //displays X or O on the screen
+  this.innerHTML = optionArray[count];
   count++;
 }
 
 //Functions
 function whoWins() {
+  // document.querySelector(finesser.that).style.color = "blue";
+
+  //one.style.color = "orange";
+  // finesser.that.style.color = "green";
+  var tieTracker = 0;
   //convert array to string on demand
   var arrayXtoString = arrayX.join("");
   var arrayOtoString = arrayO.join("");
 
+  //ways to win for player X
   for (way of waysTowin) {
     //to ensure that stuff only runs when the array contains at least 3 elements
     if (arrayXtoString.length > 2) {
@@ -64,24 +84,28 @@ function whoWins() {
         //So it makes sense to add +1 to make it 0;
         stopGap[g] = arrayXtoString.search(way[g]) + 1;
       }
+      //question: i am not able to create an array
+      //outside the for loop to track the value of stopGap array. And i don't understand why
 
       //conditional to find out if array contains a match
       if (!stopGap.includes(0)) {
         // console.log("itemstopgp " + stopGapCollector);
-        console.log("x wins ajj ");
+        console.log("x wins ");
+        tieTracker++;
         //to disable click event after winner is found
         $(".item").off("click");
-        break;
-      } else if (stopGap.includes(0) && arrayXtoString.length === 5) {
-        // console.log("tiedinyou " + stopGapCollector);
-        //to disable click event after winner is found
-        $(".item").off("click");
-        console.log("a draw");
         break;
       }
     }
   }
 
+  //to check for a tie
+  if (!tieTracker && arrayXtoString.length === 5) {
+    $(".item").off("click");
+    console.log("a draw ");
+  }
+
+  //ways to win for player O
   for (way of waysTowin) {
     //to ensure that stuff only runs when the array contains at least 3 elements
     if (arrayOtoString.length > 2) {
@@ -111,6 +135,7 @@ function collate(arr) {
     //convert string to array
     middle[i] = arr[i].split("");
 
+    //the individual permutations of each string turned array. Say '143'=>[1,4,3],[4,1,3]
     enRoute[i] = [
       middle[i][0] + middle[i][1] + middle[i][2],
       middle[i][0] + middle[i][2] + middle[i][1],
