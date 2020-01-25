@@ -9,6 +9,12 @@
       href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -21,8 +27,39 @@
             fugiat ducimus autem quas incidunt. Corrupti cupiditate ducimus
             debitis veniam amet?
           </p>
+          <button class="game-settings">Game Options</button>
         </div>
       </header>
+
+      <section class="introduction">
+        <div class="container">
+          <form action="">
+            <div class="player-1-detail">
+              <label for="player-1-intro">Player 1</label>
+              <input
+                type="text"
+                id="player-1-intro"
+                placeholder="Enter your name"
+              />
+              <label for="player-1-character">Playing as</label>
+              <input type="text" id="player-1-character" value="X" />
+            </div>
+            <div class="player-2-detail">
+              <label for="player-2-intro">Player 2</label>
+              <input
+                type="text"
+                id="player-2-intro"
+                placeholder="Enter your name"
+              />
+              <label for="player-2-character">Playing as</label>
+              <input type="text" id="player-2-character" value="O" />
+            </div>
+          </form>
+        </div>
+      </section>
+      <!-- <section class="game-options">
+
+      </section> -->
 
       <section class="main">
         <div class="container">
@@ -38,12 +75,104 @@
             <button type="button" value="8" class="item item-8"></button>
             <button type="button" value="9" class="item item-9"></button>
           </div>
+
+          <div class="clear-board">
+            <button type="button" class="btn btn-danger">
+              Clear Board
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="my-modal">
+        <!-- Button trigger modal -->
+        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+          Launch demo modal
+        </button> -->
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="my-modal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalCenterTitle"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                  Result
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p class="modal-character"></p>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="button" class="btn btn-primary">
+                  Play Again
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="scoreboard">
+        <div class="container">
+          <h3>Scoreboard</h3>
+          <div class="flex-container">
+            <p class="player-1-score">
+              Player 1: <span class="player-1-value"></span>
+            </p>
+            <p class="player-tie">
+              Tie: <span class="player-tie-value"></span>
+            </p>
+            <p class="player-2-score">
+              Player 2: <span class="player-2-value"></span>
+            </p>
+          </div>
+
+          <button type="button" class="btn btn-danger">
+            Clear Records
+          </button>
         </div>
       </section>
     </div>
     <script
       src="https://code.jquery.com/jquery-3.4.1.js"
       integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
     <script src="app.js"></script>

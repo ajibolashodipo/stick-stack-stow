@@ -3,11 +3,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Courier";
-  /* font-family: "Quicksand", sans-serif; */
-  /* font-family: "Manjari", sans-serif; */
-  /* font-weight: 700; */
-  /* color: white; */
-  /* color: black; */
 }
 ul {
   padding: 0;
@@ -21,20 +16,15 @@ body {
   min-height: 100%;
   width: 100%;
   position: relative;
-  /* background: black; */
-  /* background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url(./img/nature-4407819_960_720.png); */
 }
 
 .main-container {
   width: 60%;
-  margin: 5% auto;
-  /* margin-bottom: 10vh !important; */
-  padding: 2.5%;
+  margin: 2% auto;
+  padding-top: 2.5%;
   border: 1px solid green;
   border-radius: 10px;
   text-align: center;
-  /* padding: 5%; */
 }
 .main-text {
   color: red;
@@ -58,16 +48,18 @@ button {
   font-size: 5rem !important;
   color: #555;
   text-align: center;
-  /* line-height: 1rem; */
-  /* padding: 20% 0; */
 }
 
 .container {
   /* width: 60%; */
   margin: auto !important;
-  /* border: 5px solid red; */
+  padding: 2.5%;
+}
+div.flex-container {
+  display: flex;
+  justify-content: space-around;
 }
 
-#header {
-  margin-bottom: 10%;
+.clear-board {
+  padding-top: 5%;
 }

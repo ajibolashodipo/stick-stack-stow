@@ -27,6 +27,10 @@ var stopGapCollector = [];
 var finesser = {
   // tieTracker: 0
 };
+
+let xC = localStorage.setItem("countX", "0");
+let yC = localStorage.setItem("countO", "0");
+let tC = localStorage.setItem("tieC", "0");
 var men = 47;
 // var tieTracker = 0;
 // document.querySelector(".main-text").style.color = "blue";
@@ -53,13 +57,12 @@ function doSomething(event) {
     document.querySelector(finesser.that).style.color = "blue";
   }
   // one.style.color = "orange";
-
+  this.innerHTML = optionArray[count];
+  count++;
   //Function to check who wins
   whoWins();
 
   //displays X or O on the screen
-  this.innerHTML = optionArray[count];
-  count++;
 }
 
 //Functions
@@ -91,9 +94,17 @@ function whoWins() {
       if (!stopGap.includes(0)) {
         // console.log("itemstopgp " + stopGapCollector);
         console.log("x wins ");
+        $(".modal-character").text("X wins");
+
         tieTracker++;
         //to disable click event after winner is found
         $(".item").off("click");
+
+        //Update score on local storage
+        let xTemp = JSON.parse(localStorage.getItem("countX"));
+
+        //alert("x wins");
+        $("#my-modal").modal("show");
         break;
       }
     }
@@ -103,6 +114,8 @@ function whoWins() {
   if (!tieTracker && arrayXtoString.length === 5) {
     $(".item").off("click");
     console.log("a draw ");
+    $(".modal-character").text("No winner. A draw");
+    $("#my-modal").modal("show");
   }
 
   //ways to win for player O
@@ -121,8 +134,12 @@ function whoWins() {
       if (!stopGap.includes(0)) {
         // console.log("itemstopgp " + stopGapCollector);
         console.log("O wins ");
+        $(".modal-character").text("O wins");
+
         //to disable click event after winner is found
         $(".item").off("click");
+        // alert("o wins");
+        $("#my-modal").modal("show");
 
         break;
       }
