@@ -29,7 +29,6 @@ var finesser = {
 };
 let tieCount, oCount;
 let men = 47;
-
 //testrun
 let tallyX;
 let tallyY;
@@ -244,7 +243,8 @@ $("#clear-records").click(e => {
   $(".player-tie-value").text(c);
 });
 
-//Function to find all possible permutations (they are 48 by the way) of winning a tic tac toe game.
+//Function to find all possible permutations (they are 48 by the way)
+//of winning a tic tac toe game.
 function collate(arr) {
   for (var i = 0; i < arr.length; i++) {
     //convert string to array
