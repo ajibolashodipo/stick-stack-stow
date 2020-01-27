@@ -27,15 +27,26 @@ var stopGapCollector = [];
 var finesser = {
   // tieTracker: 0
 };
+let tieCount, oCount;
+let men = 47;
 
-let xC = localStorage.setItem("countX", "0");
-let yC = localStorage.setItem("countO", "0");
-let tC = localStorage.setItem("tieC", "0");
-var men = 47;
-// var tieTracker = 0;
-// document.querySelector(".main-text").style.color = "blue";
+//testrun
+let tallyX;
+
+//onload event to update X's score in real time
+window.addEventListener("load", event => {
+  console.log("page is fully loaded");
+  //checks if array exists in storage, if not, it assigns an empty array to it
+  tallyX = JSON.parse(localStorage.getItem("tallyX")) || [];
+  console.log(tallyX);
+  //gets the last index (current high score) from the array
+  const agbeke = tallyX[tallyX.length - 1];
+  console.log(agbeke);
+  //renders high score on the screen
+  $(".player-1-value").text(agbeke);
+});
+
 $(".item").one("click", doSomething);
-
 //main function
 function doSomething(event) {
   //Class the array of X and O
@@ -95,15 +106,25 @@ function whoWins() {
         // console.log("itemstopgp " + stopGapCollector);
         console.log("x wins ");
         $(".modal-character").text("X wins");
-
         tieTracker++;
         //to disable click event after winner is found
         $(".item").off("click");
 
         //Update score on local storage
-        let xTemp = JSON.parse(localStorage.getItem("countX"));
-
-        //alert("x wins");
+        //Set first element of tally array to zero
+        tallyX[0] = 0;
+        //push increments of 1 to the end of the array
+        tallyX.push(tallyX[tallyX.length - 1] + 1);
+        //store tally array iin local storage
+        localStorage.setItem("tallyX", JSON.stringify(tallyX));
+        //get back array from local storage
+        const tobi = JSON.parse(localStorage.getItem("tallyX"));
+        //get most recent element of the array(the geratest number)
+        const loml = tobi[tobi.length - 1];
+        console.log(loml);
+        //render element to screen
+        $(".player-1-value").text(loml);
+        //initiate the modal
         $("#my-modal").modal("show");
         break;
       }
