@@ -32,10 +32,13 @@ let men = 47;
 
 //testrun
 let tallyX;
+let tallyY;
+let tallyTie;
 
 //onload event to update X's score in real time
 window.addEventListener("load", event => {
   console.log("page is fully loaded");
+  //For player X
   //checks if array exists in storage, if not, it assigns an empty array to it
   tallyX = JSON.parse(localStorage.getItem("tallyX")) || [];
   console.log(tallyX);
@@ -44,6 +47,25 @@ window.addEventListener("load", event => {
   console.log(agbeke);
   //renders high score on the screen
   $(".player-1-value").text(agbeke);
+
+  //For player O
+  //checks if array exists in storage, if not, it assigns an empty array to it
+  tallyY = JSON.parse(localStorage.getItem("tallyY")) || [];
+  console.log(tallyY);
+  //gets the last index (current high score) from the array
+  const temmy = tallyY[tallyY.length - 1];
+  console.log(temmy);
+  //renders high score on the screen
+  $(".player-2-value").text(temmy);
+
+  //For Player Draw
+  tallyTie = JSON.parse(localStorage.getItem("tallyTie")) || [];
+  console.log(tallyTie);
+  //gets the last index (current high score) from the array
+  const bisola = tallyTie[tallyTie.length - 1];
+  console.log(bisola);
+  //renders high score on the screen
+  $(".player-tie-value").text(bisola);
 });
 
 $(".item").one("click", doSomething);
@@ -135,6 +157,22 @@ function whoWins() {
   if (!tieTracker && arrayXtoString.length === 5) {
     $(".item").off("click");
     console.log("a draw ");
+
+    //Update score on local storage
+    //Set first element of tally array to zero
+    tallyTie[0] = 0;
+    //push increments of 1 to the end of the array
+    tallyTie.push(tallyTie[tallyTie.length - 1] + 1);
+    //store tally array iin local storage
+    localStorage.setItem("tallyTie", JSON.stringify(tallyTie));
+    //get back array from local storage
+    const tobi = JSON.parse(localStorage.getItem("tallyTie"));
+    //get most recent element of the array(the geratest number)
+    const loml = tobi[tobi.length - 1];
+    console.log(tobi);
+    //render element to screen
+    $(".player-tie-value").text(loml);
+
     $(".modal-character").text("No winner. A draw");
     $("#my-modal").modal("show");
   }
@@ -159,6 +197,22 @@ function whoWins() {
 
         //to disable click event after winner is found
         $(".item").off("click");
+
+        //Update score on local storage
+        //Set first element of tally array to zero
+        tallyY[0] = 0;
+        //push increments of 1 to the end of the array
+        tallyY.push(tallyY[tallyY.length - 1] + 1);
+        //store tally array iin local storage
+        localStorage.setItem("tallyY", JSON.stringify(tallyY));
+        //get back array from local storage
+        const tobi = JSON.parse(localStorage.getItem("tallyY"));
+        //get most recent element of the array(the geratest number)
+        const loml = tobi[tobi.length - 1];
+        console.log(loml);
+        //render element to screen
+        $(".player-2-value").text(loml);
+
         // alert("o wins");
         $("#my-modal").modal("show");
 
@@ -167,6 +221,29 @@ function whoWins() {
     }
   }
 }
+
+//to clear records
+$("#clear-records").click(e => {
+  //player O
+  tallyY = [];
+  tallyY[0] = 0;
+  localStorage.setItem("tallyY", JSON.stringify(tallyY));
+  const a = JSON.parse(localStorage.getItem("tallyY"));
+  $(".player-2-value").text(a);
+  //player X
+  tallyX = [];
+  tallyX[0] = 0;
+  localStorage.setItem("tallyX", JSON.stringify(tallyX));
+  const b = JSON.parse(localStorage.getItem("tallyX"));
+  $(".player-1-value").text(b);
+  //player tie
+  tallyTie = [];
+  tallyTie[0] = 0;
+  localStorage.setItem("tallyTie", JSON.stringify(tallyTie));
+  const c = JSON.parse(localStorage.getItem("tallyTie"));
+  $(".player-tie-value").text(c);
+});
+
 //Function to find all possible permutations (they are 48 by the way) of winning a tic tac toe game.
 function collate(arr) {
   for (var i = 0; i < arr.length; i++) {
