@@ -12,7 +12,8 @@ let nine = document.querySelector(".item-9");
 let playerOneChar = document.querySelector("#player-1-character");
 let playerTwoChar = document.querySelector("#player-2-character");
 let saveChar = document.querySelector("#character-save");
-let optionArray = ["x", "o", "x", "o", "x", "o", "x", "o", "x"];
+// let optionArray = ["x", "o", "x", "o", "x", "o", "x", "o", "x"];
+let optionArray = [];
 let middle = [];
 let enRoute = [];
 let toWin = ["123", "456", "789", "147", "258", "369", "159", "357"];
@@ -38,12 +39,13 @@ let tallyY;
 let tallyTie;
 let firstChar;
 let secondChar;
+let flexibleObj = {};
 
 //onload event to update X's score in real time
 window.addEventListener("load", event => {
   //For player characters
-  firstChar = JSON.parse(localStorage.getItem("player1Char")) || "B";
-  secondChar = JSON.parse(localStorage.getItem("player2Char")) || "P";
+  firstChar = JSON.parse(localStorage.getItem("player1Char")) || "X";
+  secondChar = JSON.parse(localStorage.getItem("player2Char")) || "O";
   //render player character on screen
   playerOneChar.value = firstChar;
   playerTwoChar.value = secondChar;
@@ -82,21 +84,21 @@ function savePlayerChar(e) {
   let player2Char = playerTwoChar.value;
   localStorage.setItem("player1Char", JSON.stringify(player1Char));
   localStorage.setItem("player2Char", JSON.stringify(player2Char));
-  // localStorage.getItem("player1Char");
-  // localStorage.getItem("player2Char");
+  flexibleObj.first = JSON.parse(localStorage.getItem("player1Char"));
+  flexibleObj.second = JSON.parse(localStorage.getItem("player2Char"));
 
-  //future implementation -- return bis, sib as objects for access in other functions
+  flexibleArray(flexibleObj.first, flexibleObj.second);
 }
 
 $(".item").one("click", doSomething);
 //main function
 function doSomething(event) {
   //Class the array of X and O
-  if (optionArray[count] == "x") {
+  if (optionArray[count] == flexibleObj.first) {
     arrayX[j] = this.value;
     j++;
   }
-  if (optionArray[count] == "o") {
+  if (optionArray[count] == flexibleObj.second) {
     arrayO[k] = this.value;
     k++;
 
@@ -125,6 +127,21 @@ $("#clear-board").click(clearBoard);
 $("#play-again-button").click(clearBoard);
 
 //Functions
+
+//Function that makes an array of the characters chosen by the players
+function flexibleArray(char1, char2) {
+  // optionArray = ["x", "o", "x", "o", "x", "o", "x", "o", "x"];
+
+  for (let i = 0; i < 9; i++) {
+    if (i % 2) {
+      optionArray[i] = char2;
+      continue;
+    }
+    optionArray[i] = char1;
+  }
+  console.log(optionArray);
+  return optionArray;
+}
 function whoWins() {
   // document.querySelector(finesser.that).style.color = "blue";
 
@@ -151,7 +168,7 @@ function whoWins() {
 
       //conditional to find out if array contains a match
       if (!stopGap.includes(0)) {
-        $(".modal-character").text("X wins");
+        $(".modal-character").text(`${flexibleObj.first} wins`);
         tieTracker++;
         //to disable click event after winner is found
         $(".item").off("click");
@@ -212,7 +229,7 @@ function whoWins() {
 
       //conditional to find out if array contains a match
       if (!stopGap.includes(0)) {
-        $(".modal-character").text("O wins");
+        $(".modal-character").text(`${flexibleObj.second} wins`);
 
         //to disable click event after winner is found
         $(".item").off("click");
