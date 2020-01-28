@@ -1,30 +1,33 @@
 //Variable Declaration
-var buttons = document.querySelectorAll(".item");
-var one = document.querySelector(".item-1");
-var two = document.querySelector(".item-2");
-var three = document.querySelector(".item-3");
-var four = document.querySelector(".item-4");
-var five = document.querySelector(".item-5");
-var six = document.querySelector(".item-6");
-var seven = document.querySelector(".item-7");
-var eight = document.querySelector(".item-8");
-var nine = document.querySelector(".item-9");
-var optionArray = ["x", "o", "x", "o", "x", "o", "x", "o", "x"];
-var middle = [];
-var enRoute = [];
-var toWin = ["123", "456", "789", "147", "258", "369", "159", "357"];
-var finalRes = {};
-var count = 0;
-var j = 0;
-var k = 0;
-var stopee = 0;
-var array = [];
-var arrayX = [];
-var arrayO = [];
-var waysTowin = collate(toWin);
-var stopGap = [];
-var stopGapCollector = [];
-var finesser = {
+let buttons = document.querySelectorAll(".item");
+let one = document.querySelector(".item-1");
+let two = document.querySelector(".item-2");
+let three = document.querySelector(".item-3");
+let four = document.querySelector(".item-4");
+let five = document.querySelector(".item-5");
+let six = document.querySelector(".item-6");
+let seven = document.querySelector(".item-7");
+let eight = document.querySelector(".item-8");
+let nine = document.querySelector(".item-9");
+let playerOneChar = document.querySelector("#player-1-character");
+let playerTwoChar = document.querySelector("#player-2-character");
+let saveChar = document.querySelector("#character-save");
+let optionArray = ["x", "o", "x", "o", "x", "o", "x", "o", "x"];
+let middle = [];
+let enRoute = [];
+let toWin = ["123", "456", "789", "147", "258", "369", "159", "357"];
+let finalRes = {};
+let count = 0;
+let j = 0;
+let k = 0;
+let stopee = 0;
+let array = [];
+let arrayX = [];
+let arrayO = [];
+let waysTowin = collate(toWin);
+let stopGap = [];
+let stopGapCollector = [];
+let finesser = {
   // tieTracker: 0
 };
 let tieCount, oCount;
@@ -33,17 +36,24 @@ let men = 47;
 let tallyX;
 let tallyY;
 let tallyTie;
+let firstChar;
+let secondChar;
 
 //onload event to update X's score in real time
 window.addEventListener("load", event => {
-  console.log("page is fully loaded");
+  //For player characters
+  firstChar = JSON.parse(localStorage.getItem("player1Char")) || "B";
+  secondChar = JSON.parse(localStorage.getItem("player2Char")) || "P";
+  //render player character on screen
+  playerOneChar.value = firstChar;
+  playerTwoChar.value = secondChar;
+
   //For player X
   //checks if array exists in storage, if not, it assigns an empty array to it
   tallyX = JSON.parse(localStorage.getItem("tallyX")) || [];
   console.log(tallyX);
   //gets the last index (current high score) from the array
   const agbeke = tallyX[tallyX.length - 1];
-  console.log(agbeke);
   //renders high score on the screen
   $(".player-1-value").text(agbeke);
 
@@ -53,7 +63,6 @@ window.addEventListener("load", event => {
   console.log(tallyY);
   //gets the last index (current high score) from the array
   const temmy = tallyY[tallyY.length - 1];
-  console.log(temmy);
   //renders high score on the screen
   $(".player-2-value").text(temmy);
 
@@ -62,10 +71,22 @@ window.addEventListener("load", event => {
   console.log(tallyTie);
   //gets the last index (current high score) from the array
   const bisola = tallyTie[tallyTie.length - 1];
-  console.log(bisola);
   //renders high score on the screen
   $(".player-tie-value").text(bisola);
 });
+
+saveChar.addEventListener("click", savePlayerChar);
+function savePlayerChar(e) {
+  e.preventDefault();
+  let player1Char = playerOneChar.value;
+  let player2Char = playerTwoChar.value;
+  localStorage.setItem("player1Char", JSON.stringify(player1Char));
+  localStorage.setItem("player2Char", JSON.stringify(player2Char));
+  // localStorage.getItem("player1Char");
+  // localStorage.getItem("player2Char");
+
+  //future implementation -- return bis, sib as objects for access in other functions
+}
 
 $(".item").one("click", doSomething);
 //main function
@@ -83,7 +104,6 @@ function doSomething(event) {
     //Here i am trying to extract the classname by some brute weird flex
     that = this;
     finesser.that = "." + that.className.split(" ")[1];
-    //console.log(finesser.that);
 
     //DOM manipulation to change the colour of 'o'
     document.querySelector(finesser.that).style.color = "blue";
@@ -96,6 +116,13 @@ function doSomething(event) {
 
   //displays X or O on the screen
 }
+
+//to clear records
+$("#clear-records").click(clearRecords);
+//to clear board
+$("#clear-board").click(clearBoard);
+//to reload page on pressing button in modal
+$("#play-again-button").click(clearBoard);
 
 //Functions
 function whoWins() {
@@ -124,8 +151,6 @@ function whoWins() {
 
       //conditional to find out if array contains a match
       if (!stopGap.includes(0)) {
-        // console.log("itemstopgp " + stopGapCollector);
-        console.log("x wins ");
         $(".modal-character").text("X wins");
         tieTracker++;
         //to disable click event after winner is found
@@ -142,7 +167,6 @@ function whoWins() {
         const tobi = JSON.parse(localStorage.getItem("tallyX"));
         //get most recent element of the array(the geratest number)
         const loml = tobi[tobi.length - 1];
-        console.log(loml);
         //render element to screen
         $(".player-1-value").text(loml);
         //initiate the modal
@@ -155,7 +179,6 @@ function whoWins() {
   //to check for a tie
   if (!tieTracker && arrayXtoString.length === 5) {
     $(".item").off("click");
-    console.log("a draw ");
 
     //Update score on local storage
     //Set first element of tally array to zero
@@ -168,7 +191,6 @@ function whoWins() {
     const tobi = JSON.parse(localStorage.getItem("tallyTie"));
     //get most recent element of the array(the geratest number)
     const loml = tobi[tobi.length - 1];
-    console.log(tobi);
     //render element to screen
     $(".player-tie-value").text(loml);
 
@@ -190,8 +212,6 @@ function whoWins() {
 
       //conditional to find out if array contains a match
       if (!stopGap.includes(0)) {
-        // console.log("itemstopgp " + stopGapCollector);
-        console.log("O wins ");
         $(".modal-character").text("O wins");
 
         //to disable click event after winner is found
@@ -208,7 +228,6 @@ function whoWins() {
         const tobi = JSON.parse(localStorage.getItem("tallyY"));
         //get most recent element of the array(the geratest number)
         const loml = tobi[tobi.length - 1];
-        console.log(loml);
         //render element to screen
         $(".player-2-value").text(loml);
 
@@ -221,8 +240,11 @@ function whoWins() {
   }
 }
 
-//to clear records
-$("#clear-records").click(e => {
+function clearBoard(e) {
+  window.location.reload();
+}
+
+function clearRecords(e) {
   //player O
   tallyY = [];
   tallyY[0] = 0;
@@ -241,9 +263,9 @@ $("#clear-records").click(e => {
   localStorage.setItem("tallyTie", JSON.stringify(tallyTie));
   const c = JSON.parse(localStorage.getItem("tallyTie"));
   $(".player-tie-value").text(c);
-});
+}
 
-//Function to find all possible permutations (they are 48 by the way)
+//Function to find all permutations (they are 48 by the way)
 //of winning a tic tac toe game.
 function collate(arr) {
   for (var i = 0; i < arr.length; i++) {
@@ -269,7 +291,5 @@ function collate(arr) {
     enRoute[6],
     enRoute[7]
   );
-  //console.log(combined);
   return finalRes.combined;
 }
-//console.log(waysTowin);
