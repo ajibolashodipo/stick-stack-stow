@@ -60,6 +60,6 @@ div.flex-container {
   justify-content: space-around;
 }
 
-.clear-board {
+#clear-board {
   padding-top: 5%;
 }

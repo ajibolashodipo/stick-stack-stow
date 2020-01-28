@@ -35,15 +35,26 @@
         <div class="container">
           <form action="">
             <div class="player-1-detail">
-              <label for="player-1-intro">Player 1</label>
+              <label for="player-1-character">Player 1</label>
 
-              <input type="text" id="player-1-character" value="X" />
+              <input
+                type="text"
+                id="player-1-character"
+                maxlength="1"
+                value="X"
+              />
             </div>
             <div class="player-2-detail">
-              <label for="player-2-intro">Player 2</label>
+              <label for="player-2-character">Player 2</label>
 
-              <input type="text" id="player-2-character" value="O" />
+              <input
+                type="text"
+                id="player-2-character"
+                maxlength="1"
+                value="O"
+              />
             </div>
+            <button id="character-save" type="submit">Save</button>
           </form>
         </div>
       </section>
@@ -66,7 +77,7 @@
             <button type="button" value="9" class="item item-9"></button>
           </div>
 
-          <div class="clear-board">
+          <div id="clear-board">
             <button type="button" class="btn btn-danger">
               Clear Board
             </button>
@@ -115,7 +126,11 @@
                 >
                   Close
                 </button>
-                <button type="button" class="btn btn-primary">
+                <button
+                  type="button"
+                  id="play-again-button"
+                  class="btn btn-primary"
+                >
                   Play Again
                 </button>
               </div>
