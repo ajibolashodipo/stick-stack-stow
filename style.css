@@ -63,3 +63,8 @@ div.flex-container {
 #clear-board {
   padding-top: 5%;
 }
+
+.main {
+  /* display: none; */
+  /* visibility: hidden; */
+}
