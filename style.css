@@ -64,7 +64,11 @@ div.flex-container {
   padding-top: 5%;
 }
 
-.main {
-  /* display: none; */
-  /* visibility: hidden; */
+#character-save {
+  margin-bottom: 2.5%;
+}
+
+#submit-validate-1,
+#submit-validate-2 {
+  display: none;
 }
