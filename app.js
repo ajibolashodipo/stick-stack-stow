@@ -9,6 +9,7 @@ let six = document.querySelector(".item-6");
 let seven = document.querySelector(".item-7");
 let eight = document.querySelector(".item-8");
 let nine = document.querySelector(".item-9");
+let mainDiv = document.querySelector(".main");
 let playerOneChar = document.querySelector("#player-1-character");
 let playerTwoChar = document.querySelector("#player-2-character");
 let saveChar = document.querySelector("#character-save");
@@ -40,6 +41,8 @@ let tallyTie;
 let firstChar;
 let secondChar;
 let flexibleObj = {};
+
+$(".main").hide();
 
 //onload event to update X's score in real time
 window.addEventListener("load", loadActions);
@@ -98,7 +101,7 @@ function savePlayerChar(e) {
   localStorage.setItem("player2Char", JSON.stringify(player2Char));
   flexibleObj.first = JSON.parse(localStorage.getItem("player1Char"));
   flexibleObj.second = JSON.parse(localStorage.getItem("player2Char"));
-
+  $(".main").slideDown(800);
   flexibleArray(flexibleObj.first, flexibleObj.second);
 }
 //main function
