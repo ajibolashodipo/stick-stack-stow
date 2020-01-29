@@ -42,7 +42,21 @@ let secondChar;
 let flexibleObj = {};
 
 //onload event to update X's score in real time
-window.addEventListener("load", event => {
+window.addEventListener("load", loadActions);
+
+saveChar.addEventListener("click", savePlayerChar);
+
+$(".item").one("click", doSomething);
+
+//to clear records
+$("#clear-records").click(clearRecords);
+//to clear board
+$("#clear-board").click(clearBoard);
+//to reload page on pressing button in modal
+$("#play-again-button").click(clearBoard);
+
+//Functions
+function loadActions(e) {
   //For player characters
   firstChar = JSON.parse(localStorage.getItem("player1Char")) || "X";
   secondChar = JSON.parse(localStorage.getItem("player2Char")) || "O";
@@ -75,9 +89,7 @@ window.addEventListener("load", event => {
   const bisola = tallyTie[tallyTie.length - 1];
   //renders high score on the screen
   $(".player-tie-value").text(bisola);
-});
-
-saveChar.addEventListener("click", savePlayerChar);
+}
 function savePlayerChar(e) {
   e.preventDefault();
   let player1Char = playerOneChar.value;
@@ -89,8 +101,6 @@ function savePlayerChar(e) {
 
   flexibleArray(flexibleObj.first, flexibleObj.second);
 }
-
-$(".item").one("click", doSomething);
 //main function
 function doSomething(event) {
   //Class the array of X and O
@@ -118,16 +128,6 @@ function doSomething(event) {
 
   //displays X or O on the screen
 }
-
-//to clear records
-$("#clear-records").click(clearRecords);
-//to clear board
-$("#clear-board").click(clearBoard);
-//to reload page on pressing button in modal
-$("#play-again-button").click(clearBoard);
-
-//Functions
-
 //Function that makes an array of the characters chosen by the players
 function flexibleArray(char1, char2) {
   // optionArray = ["x", "o", "x", "o", "x", "o", "x", "o", "x"];
