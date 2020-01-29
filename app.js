@@ -13,7 +13,6 @@ let mainDiv = document.querySelector(".main");
 let playerOneChar = document.querySelector("#player-1-character");
 let playerTwoChar = document.querySelector("#player-2-character");
 let saveChar = document.querySelector("#character-save");
-// let optionArray = ["x", "o", "x", "o", "x", "o", "x", "o", "x"];
 let optionArray = [];
 let middle = [];
 let enRoute = [];
