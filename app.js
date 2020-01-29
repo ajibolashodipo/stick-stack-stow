@@ -59,6 +59,8 @@ $("#clear-board").click(clearBoard);
 $("#play-again-button").click(clearBoard);
 
 //Functions
+
+//function that runs on page load
 function loadActions(e) {
   //For player characters
   firstChar = JSON.parse(localStorage.getItem("player1Char")) || "X";
@@ -93,6 +95,7 @@ function loadActions(e) {
   //renders high score on the screen
   $(".player-tie-value").text(bisola);
 }
+//function that saves player characters and calls function flexible array
 function savePlayerChar(e) {
   e.preventDefault();
   let player1Char = playerOneChar.value;
@@ -168,6 +171,7 @@ function flexibleArray(char1, char2) {
   console.log(optionArray);
   return optionArray;
 }
+//function that implements algorithm for a win/draw
 function whoWins() {
   // document.querySelector(finesser.that).style.color = "blue";
 
@@ -283,10 +287,11 @@ function whoWins() {
   }
 }
 
+//function that clears the board
 function clearBoard(e) {
   window.location.reload();
 }
-
+//function that clears scoreboard
 function clearRecords(e) {
   //player O
   tallyY = [];
@@ -307,7 +312,6 @@ function clearRecords(e) {
   const c = JSON.parse(localStorage.getItem("tallyTie"));
   $(".player-tie-value").text(c);
 }
-
 //Function to find all permutations (they are 48 by the way)
 //of winning a tic tac toe game.
 function collate(arr) {
