@@ -29,12 +29,9 @@ let arrayO = [];
 let waysTowin = collate(toWin);
 let stopGap = [];
 let stopGapCollector = [];
-let finesser = {
-  // tieTracker: 0
-};
+let finesser = {};
 let tieCount, oCount;
 let men = 47;
-//testrun
 let tallyX;
 let tallyY;
 let tallyTie;
@@ -42,7 +39,10 @@ let firstChar;
 let secondChar;
 let flexibleObj = {};
 
+//jquery methods to hide the board and error messages on page load
 $(".main").hide();
+$("#submit-validate-2").hide();
+$("#submit-validate-1").hide();
 
 //onload event to update X's score in real time
 window.addEventListener("load", loadActions);
@@ -97,11 +97,34 @@ function savePlayerChar(e) {
   e.preventDefault();
   let player1Char = playerOneChar.value;
   let player2Char = playerTwoChar.value;
+
+  //validate against empty player characters
+  if (!player1Char || !player2Char) {
+    $("#submit-validate-1").show();
+    setTimeout(function() {
+      $("#submit-validate-1").hide();
+    }, 2000);
+
+    return;
+  }
+  //validate against same characters
+  if (player1Char === player2Char) {
+    $("#submit-validate-2").show();
+    setTimeout(function() {
+      $("#submit-validate-2").hide();
+    }, 2000);
+
+    return;
+  }
+  //save items in local storage
   localStorage.setItem("player1Char", JSON.stringify(player1Char));
   localStorage.setItem("player2Char", JSON.stringify(player2Char));
+  //assign saved values to keys of a global object
   flexibleObj.first = JSON.parse(localStorage.getItem("player1Char"));
   flexibleObj.second = JSON.parse(localStorage.getItem("player2Char"));
+  //renderr and animate entrance of board
   $(".main").slideDown(800);
+  //function call to generate array of characters used to populate the board
   flexibleArray(flexibleObj.first, flexibleObj.second);
 }
 //main function
