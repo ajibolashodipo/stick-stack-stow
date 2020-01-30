@@ -10,6 +10,10 @@
       rel="stylesheet"
     />
     <link
+      href="https://fonts.googleapis.com/css?family=Short+Stack&display=swap"
+      rel="stylesheet"
+    />
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
       integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc="
@@ -27,11 +31,11 @@
     <div class="main-container">
       <header id="header" class="header-info">
         <div class="container">
-          <h1 class="main-title">Stick-Stack-Stow</h1>
+          <h1 class="main-title">Tic-Tac-Choose</h1>
           <p class="main-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
-            fugiat ducimus autem quas incidunt. Corrupti cupiditate ducimus
-            debitis veniam amet?
+            Imagine a future where players are free to choose their characters
+            in a tic-tac-toe game. Well, imagine no more. For the future is
+            here. Almost
           </p>
         </div>
       </header>
@@ -39,27 +43,32 @@
       <section class="introduction">
         <div class="container">
           <form action="">
-            <div class="player-1-detail">
-              <label for="player-1-character">Player 1</label>
+            <div class="form-flex">
+              <div class="player-1-detail">
+                <label for="player-1-character">Player 1</label>
 
-              <input
-                type="text"
-                id="player-1-character"
-                maxlength="1"
-                value="X"
-              />
-            </div>
-            <div class="player-2-detail">
-              <label for="player-2-character">Player 2</label>
+                <input
+                  type="text"
+                  id="player-1-character"
+                  maxlength="1"
+                  value="X"
+                />
+              </div>
+              <div class="player-2-detail">
+                <label for="player-2-character">Player 2</label>
 
-              <input
-                type="text"
-                id="player-2-character"
-                maxlength="1"
-                value="O"
-              />
+                <input
+                  type="text"
+                  id="player-2-character"
+                  maxlength="1"
+                  value="O"
+                />
+              </div>
             </div>
-            <button id="character-save" type="submit">Submit</button>
+
+            <button id="character-save" class="submit-button btn" type="submit">
+              Take me to the future
+            </button>
           </form>
 
           <div id="submit-validate-1" class="alert alert-danger" role="alert">
@@ -86,7 +95,7 @@
           </div>
 
           <div id="clear-board">
-            <button type="button" class="btn btn-danger">
+            <button type="button" class=" reset-stuff btn btn-danger">
               Clear Board
             </button>
           </div>
@@ -94,7 +103,6 @@
       </section>
 
       <section class="my-modal">
-
         <!-- Modal -->
         <div
           class="modal fade"
@@ -147,18 +155,22 @@
         <div class="container">
           <h3>Scoreboard</h3>
           <div class="flex-container">
-            <p class="player-1-score">
+            <p class="player-1-score player-scores">
               Player 1: <span class="player-1-value">0</span>
             </p>
-            <p class="player-tie">
+            <p class="player-tie player-scores">
               Tie: <span class="player-tie-value">0</span>
             </p>
-            <p class="player-2-score">
+            <p class="player-2-score player-scores">
               Player 2: <span class="player-2-value">0</span>
             </p>
           </div>
 
-          <button id="clear-records" type="button" class="btn btn-danger">
+          <button
+            id="clear-records"
+            type="button"
+            class="reset-stuff btn btn-danger"
+          >
             Clear Records
           </button>
         </div>
