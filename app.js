@@ -47,6 +47,7 @@ $("#submit-validate-1").hide();
 window.addEventListener("load", loadActions);
 
 saveChar.addEventListener("click", savePlayerChar);
+// $("#character-save").one("click", savePlayerChar);
 
 $(".item").one("click", doSomething);
 
