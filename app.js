@@ -133,11 +133,11 @@ function savePlayerChar(e) {
 //main function
 function doSomething(event) {
   //Class the array of X and O
-  if (optionArray[count] == flexibleObj.first) {
+  if (optionArray[count] === flexibleObj.first) {
     arrayX[j] = this.value;
     j++;
   }
-  if (optionArray[count] == flexibleObj.second) {
+  if (optionArray[count] === flexibleObj.second) {
     arrayO[k] = this.value;
     k++;
 
