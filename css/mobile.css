@@ -26,10 +26,10 @@ button.submit-button {
 
 @media only screen and (max-width: 576px) {
   .container {
-    width: 90%;
+    width: 95%;
   }
   .main-container {
-    width: 90%;
+    width: 95%;
   }
 
   .main-title {
