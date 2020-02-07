@@ -153,6 +153,7 @@ div.flex-container {
   font-size: 1.2rem;
   padding: 1% 2%;
   width: 40%;
+  margin-bottom: 15%;
 }
 .player-scores {
   color: orange;
@@ -167,7 +168,6 @@ div.flex-container {
   flex-shrink: 0;
 }
 .real-footer-section {
- 
   display: flex;
   justify-content: space-around;
   align-items: center;
