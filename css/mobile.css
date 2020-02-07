@@ -3,6 +3,9 @@
   font-size: 3rem;
   /* color: red; */
 }
+.main-container {
+  width: 80%;
+}
 .main-text {
   display: none;
 }
