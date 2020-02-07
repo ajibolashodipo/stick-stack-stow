@@ -72,7 +72,7 @@ function loadActions(e) {
   //For player X
   //checks if array exists in storage, if not, it assigns an empty array to it
   tallyX = JSON.parse(localStorage.getItem("tallyX")) || [];
-  console.log(tallyX);
+  //console.log(tallyX);
   //gets the last index (current high score) from the array
   const agbeke = tallyX[tallyX.length - 1];
   //renders high score on the screen
@@ -81,7 +81,7 @@ function loadActions(e) {
   //For player O
   //checks if array exists in storage, if not, it assigns an empty array to it
   tallyY = JSON.parse(localStorage.getItem("tallyY")) || [];
-  console.log(tallyY);
+  //console.log(tallyY);
   //gets the last index (current high score) from the array
   const temmy = tallyY[tallyY.length - 1];
   //renders high score on the screen
@@ -89,7 +89,7 @@ function loadActions(e) {
 
   //For Player Draw
   tallyTie = JSON.parse(localStorage.getItem("tallyTie")) || [];
-  console.log(tallyTie);
+  //console.log(tallyTie);
   //gets the last index (current high score) from the array
   const bisola = tallyTie[tallyTie.length - 1];
   //renders high score on the screen
@@ -147,7 +147,7 @@ function doSomething(event) {
     finesser.that = "." + that.className.split(" ")[1];
 
     //DOM manipulation to change the colour of 'o'
-    document.querySelector(finesser.that).style.color = "blue";
+    document.querySelector(finesser.that).style.color = "orange";
   }
   // one.style.color = "orange";
   this.innerHTML = optionArray[count];
@@ -168,7 +168,7 @@ function flexibleArray(char1, char2) {
     }
     optionArray[i] = char1;
   }
-  console.log(optionArray);
+  //console.log(optionArray);
   return optionArray;
 }
 //function that implements algorithm for a win/draw
