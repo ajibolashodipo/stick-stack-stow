@@ -35,6 +35,12 @@ button.submit-button {
   .main-title {
     font-size: 3rem;
   }
+
+  .grid-container {
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+  }
+
   button.submit-button {
     width: 90%;
   }
