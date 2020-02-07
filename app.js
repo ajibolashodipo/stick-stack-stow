@@ -198,7 +198,7 @@ function whoWins() {
 
       //conditional to find out if array contains a match
       if (!stopGap.includes(0)) {
-        $(".modal-character").text(`${flexibleObj.first} wins`);
+        $(".modal-character").text(` Yayyy! ${flexibleObj.first} wins`);
         tieTracker++;
         //to disable click event after winner is found
         $(".item").off("click");
@@ -241,7 +241,7 @@ function whoWins() {
     //render element to screen
     $(".player-tie-value").text(loml);
 
-    $(".modal-character").text("No winner. A draw");
+    $(".modal-character").text("Nopes. No winner. A draw");
     $("#my-modal").modal("show");
   }
 
@@ -259,7 +259,7 @@ function whoWins() {
 
       //conditional to find out if array contains a match
       if (!stopGap.includes(0)) {
-        $(".modal-character").text(`${flexibleObj.second} wins`);
+        $(".modal-character").text(`Yayyy! ${flexibleObj.second} wins`);
 
         //to disable click event after winner is found
         $(".item").off("click");
