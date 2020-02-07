@@ -1,0 +1,58 @@
+.main-title {
+  margin-top: 10%;
+  font-size: 3rem;
+  /* color: red; */
+}
+.main-text {
+  display: none;
+}
+p.main-text-mobile {
+  display: block;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  word-spacing: 0.5rem;
+  letter-spacing: 0.1rem;
+}
+
+button.submit-button {
+  width: 50%;
+}
+
+/* media */
+
+@media only screen and (max-width: 576px) {
+  .container {
+    border: none;
+    width: 100%;
+  }
+  .main-container {
+    width: 100%;
+  }
+
+  .main-title {
+    font-size: 3rem;
+  }
+  button.submit-button {
+    width: 90%;
+  }
+
+  #clear-records {
+    width: 60%;
+  }
+
+  .scoreboard h3 {
+    font-size: 2rem;
+  }
+  .player-scores {
+    font-size: 1rem;
+  }
+
+  .real-footer-section h3 {
+    font-size: 1rem;
+  }
+
+  .real-footer-section .fab {
+    font-size: 1.2rem;
+  }
+}
