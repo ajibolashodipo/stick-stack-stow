@@ -20,6 +20,11 @@ p.main-text-mobile {
 
 button.submit-button {
   width: 50%;
+  font-weight: normal;
+}
+.reset-stuff {
+  font-weight: normal;
+  margin-bottom: 10%;
 }
 
 /* media */

@@ -104,7 +104,7 @@ button.submit-button {
   color: white;
   padding: 1% 2%;
   width: 50%;
-  font-weight: normal;
+  font-weight: bold;
   font-size: 1.2rem;
 }
 
@@ -149,11 +149,11 @@ div.flex-container {
 
 .reset-stuff {
   color: white;
-  font-weight: normal;
+  font-weight: bold;
   font-size: 1.2rem;
   padding: 1% 2%;
   width: 40%;
-  margin-bottom: 15%;
+  margin-bottom: 2.5%;
 }
 .player-scores {
   color: orange;
