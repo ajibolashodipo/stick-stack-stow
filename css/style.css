@@ -159,6 +159,11 @@ div.flex-container {
   color: orange;
   font-size: 1.5rem;
 }
+.player-1-value,
+.player-2-value,
+.player-tie-value {
+  color: #00bfa6;
+}
 
 /* footer */
 
