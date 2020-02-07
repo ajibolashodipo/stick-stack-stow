@@ -98,6 +98,16 @@ function loadActions(e) {
 //function that saves player characters and calls function flexible array
 function savePlayerChar(e) {
   e.preventDefault();
+
+  // implementing smooth scroll
+
+  $("html, body").animate(
+    {
+      scrollTop: $("#character-save").offset().top - 5
+    },
+    1200
+  );
+
   let player1Char = playerOneChar.value;
   let player2Char = playerTwoChar.value;
 
